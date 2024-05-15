@@ -3,6 +3,7 @@ from django.urls import path
 from .views import index, category_posts, post_detail
 
 app_name = 'blog'
+# внес строку после кода
 
 urlpatterns = [
     path('', index, name='index'),
