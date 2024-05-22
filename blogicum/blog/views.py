@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import Http404
 
 
 posts = [
@@ -51,8 +52,12 @@ def category_posts(request, category_slug):
 
 
 def post_detail(request, id):
-    return render(request, 'blog/detail.html', context={'post': posts[id]})
-
+    try:
+        for post in posts:
+            if id == post['id']:
+                return render(request, 'blog/detail.html', context={'post': post})
+    except ValueError as error:
+        raise Http404(f"запись не найдена {error}")
 
 def index(request):
     return render(request, 'blog/index.html',
