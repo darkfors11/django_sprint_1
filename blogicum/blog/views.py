@@ -55,7 +55,9 @@ def post_detail(request, id):
     try:
         for post in posts:
             if id == post['id']:
-                return render(request, 'blog/detail.html', context={'post': post})
+                return render(request,
+                              'blog/detail.html',
+                              context={'post': post})
     except ValueError as error:
         raise Http404(f"запись не найдена {error}")
 
