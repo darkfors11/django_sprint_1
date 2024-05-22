@@ -59,6 +59,7 @@ def post_detail(request, id):
     except ValueError as error:
         raise Http404(f"запись не найдена {error}")
 
+
 def index(request):
     return render(request, 'blog/index.html',
                   context={'posts': reversed(posts)})
