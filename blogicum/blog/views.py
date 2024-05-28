@@ -56,11 +56,10 @@ def category_posts(request, category_slug):
 
 def post_detail(request, id):
     if id not in post:
-        raise Http404(f"запись не найдена ;(")
+        raise Http404("запись не найдена ;(")
     return render(request,
                   'blog/detail.html',
                   context={'post': post[id]})
-
 
 
 def index(request):
