@@ -44,6 +44,9 @@ posts = [
                 укутывал их, чтобы не испортились от дождя.''',
     },
 ]
+post = {}
+for post_object in posts:
+    post[post_object['id']] = post_object
 
 
 def category_posts(request, category_slug):
@@ -52,14 +55,12 @@ def category_posts(request, category_slug):
 
 
 def post_detail(request, id):
-    try:
-        for post in posts:
-            if id == post['id']:
-                return render(request,
-                              'blog/detail.html',
-                              context={'post': post})
-    except ValueError as error:
-        raise Http404(f"запись не найдена {error}")
+    if id not in post:
+        raise Http404(f"запись не найдена ;(")
+    return render(request,
+                  'blog/detail.html',
+                  context={'post': post[id]})
+
 
 
 def index(request):

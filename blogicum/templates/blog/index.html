@@ -1,9 +1,6 @@
-<!DOCTYPE html>
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<body>
-    <main>
       <div class="container py-5">
         <h1>Лента записей</h1>                        
         {% for post in posts %}
@@ -25,9 +22,7 @@
             </p>
           <a href="{% url 'blog:post_detail' post.id %}">Читать полный текст</a>
         </article>
+        </div>
         {% endfor%}
-      </div>
-    </main>
     {% endblock %}
-</body>
-</html>
+
